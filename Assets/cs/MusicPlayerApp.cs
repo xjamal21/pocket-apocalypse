@@ -24,8 +24,9 @@ public class MusicPlayerApp : MonoBehaviour
     public GameObject trackButtonPrefab;
 
     [Header("Playback UI References")]
-    public TextMeshProUGUI currentTrackText;
-    public TextMeshProUGUI playPauseButtonText;
+    public Image playPauseButtonImage;
+    public Sprite playIconSprite;
+    public Sprite pauseIconSprite;
 
     private List<Track> activePlaylist = new List<Track>();
     private int currentTrackIndex = -1;
@@ -184,22 +185,40 @@ public class MusicPlayerApp : MonoBehaviour
             if (autoPlay) audioSource.Play();
         }
 
-        if (currentTrackText != null)
-        {
-            currentTrackText.text = selected.trackName;
-        }
-
-        UpdatePlayPauseLabel();
+        UpdatePlayPauseUI();
     }
 
     public void TogglePlayPause()
     {
         if (audioSource == null || audioSource.clip == null) return;
 
-        if (audioSource.isPlaying) audioSource.Pause();
-        else audioSource.Play();
+        if (audioSource.isPlaying)
+        {
+            audioSource.Pause();
+        }
+        else
+        {
+            audioSource.Play();
+        }
 
-        UpdatePlayPauseLabel();
+        UpdatePlayPauseUI();
+    }
+
+    private void UpdatePlayPauseUI()
+    {
+        bool isPlaying = audioSource != null && audioSource.isPlaying;
+
+        if (playPauseButtonImage != null)
+        {
+            if (isPlaying && pauseIconSprite != null)
+            {
+                playPauseButtonImage.sprite = pauseIconSprite;
+            }
+            else if (!isPlaying && playIconSprite != null)
+            {
+                playPauseButtonImage.sprite = playIconSprite;
+            }
+        }
     }
 
     public void NextTrack()
@@ -212,14 +231,6 @@ public class MusicPlayerApp : MonoBehaviour
     {
         if (activePlaylist.Count == 0) return;
         LoadTrack((currentTrackIndex - 1 + activePlaylist.Count) % activePlaylist.Count, true);
-    }
-
-    private void UpdatePlayPauseLabel()
-    {
-        if (playPauseButtonText != null && audioSource != null)
-        {
-            playPauseButtonText.text = audioSource.isPlaying ? "PAUSE" : "PLAY";
-        }
     }
 
     private void Update()

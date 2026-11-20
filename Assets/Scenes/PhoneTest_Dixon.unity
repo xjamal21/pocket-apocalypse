@@ -221,7 +221,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -123058118157912311, guid: 2f66de3ce238e6c4d9236578741e5e23, type: 3}
+  m_Sprite: {fileID: -6488667490295838291, guid: d2aeb74f796872a4b8e46fd8cbf8fefc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1491,10 +1491,13 @@ MonoBehaviour:
   builtInPlaylist:
   - trackName: God's Plan
     clip: {fileID: 0}
+  - trackName: Sky - Playboi Carti
+    clip: {fileID: 0}
   trackListContent: {fileID: 2030602299}
   trackButtonPrefab: {fileID: 1006874602441766929, guid: 7341bc281d89b4c418b60ec27d35ffab, type: 3}
-  currentTrackText: {fileID: 0}
-  playPauseButtonText: {fileID: 0}
+  playPauseButtonImage: {fileID: 1537814291}
+  playIconSprite: {fileID: 3794550611322748858, guid: b4e8058de77a74e4cbb3973ef1137325, type: 3}
+  pauseIconSprite: {fileID: -8878088185706026076, guid: 6d26b9783a8827849ba449557bd02bfe, type: 3}
 --- !u!82 &1468429561
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1806,7 +1809,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1537814291}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1468429560}
+        m_TargetAssemblyTypeName: MusicPlayerApp, Assembly-CSharp
+        m_MethodName: TogglePlayPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1537814291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1827,7 +1842,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -490242242413125318, guid: 59255b582fd6e924aa73065beefec29d, type: 3}
+  m_Sprite: {fileID: 3794550611322748858, guid: b4e8058de77a74e4cbb3973ef1137325, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2039,7 +2054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4390644367213494643, guid: b5494b68d8ea4424fb0f298b35b2bea6, type: 3}
+  m_Sprite: {fileID: -1238216607478673117, guid: bf516bfc5b7679b4aab9aa515b32c8ef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
