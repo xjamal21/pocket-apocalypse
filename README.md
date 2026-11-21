@@ -31,4 +31,12 @@ Dixon
 Po Keng
 Yao Hong
 
+```
+Assets/
+├── Textures/     # Pixel-art sprites, UI frames, icons and more
+├── Audio/        # Built-in soundtrack and SFX
+├── Prefabs/      # Reusable UI and gameplay prefabs
+├── Scenes/       # Game scenes
+└── Scripts/      # Modular C# scripts (one class per file)
+
       
