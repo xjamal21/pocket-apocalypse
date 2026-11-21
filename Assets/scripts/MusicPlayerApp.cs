@@ -24,11 +24,15 @@ public class MusicPlayerApp : MonoBehaviour
     public GameObject trackButtonPrefab;
 
     [Header("Playback UI References")]
+    public Button playPauseButton;
+    public Button nextButton;
+    public Button previousButton;
     public Image playPauseButtonImage;
     public Sprite playIconSprite;
     public Sprite pauseIconSprite;
 
     private List<Track> activePlaylist = new List<Track>();
+    private List<Outline> rowOutlines = new List<Outline>();
     private int currentTrackIndex = -1;
     private string importedFolderPath;
 
@@ -43,6 +47,24 @@ public class MusicPlayerApp : MonoBehaviour
 
     private void Start()
     {
+        if (playPauseButton != null)
+        {
+            playPauseButton.onClick.RemoveAllListeners();
+            playPauseButton.onClick.AddListener(TogglePlayPause);
+        }
+
+        if (nextButton != null)
+        {
+            nextButton.onClick.RemoveAllListeners();
+            nextButton.onClick.AddListener(NextTrack);
+        }
+
+        if (previousButton != null)
+        {
+            previousButton.onClick.RemoveAllListeners();
+            previousButton.onClick.AddListener(PreviousTrack);
+        }
+
         activePlaylist = new List<Track>(builtInPlaylist);
         RebuildTrackListUI();
 
@@ -154,6 +176,8 @@ public class MusicPlayerApp : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+        rowOutlines.Clear();
+
         for (int i = 0; i < activePlaylist.Count; i++)
         {
             int index = i;
@@ -164,10 +188,28 @@ public class MusicPlayerApp : MonoBehaviour
                 label.text = $"{(index + 1):00}. {activePlaylist[index].trackName}";
             }
 
+            Outline outline = rowObj.GetComponent<Outline>();
+            if (outline != null)
+            {
+                outline.enabled = (i == currentTrackIndex);
+                rowOutlines.Add(outline);
+            }
+
             Button btn = rowObj.GetComponent<Button>();
             if (btn != null)
             {
                 btn.onClick.AddListener(() => LoadTrack(index, true));
+            }
+        }
+    }
+
+    private void UpdateTrackOutlines()
+    {
+        for (int i = 0; i < rowOutlines.Count; i++)
+        {
+            if (rowOutlines[i] != null)
+            {
+                rowOutlines[i].enabled = (i == currentTrackIndex);
             }
         }
     }
@@ -182,10 +224,12 @@ public class MusicPlayerApp : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.clip = selected.clip;
-            if (autoPlay) audioSource.Play();
+            audioSource.time = 0f;
+            if (autoPlay && selected.clip != null) audioSource.Play();
         }
 
         UpdatePlayPauseUI();
+        UpdateTrackOutlines();
     }
 
     public void TogglePlayPause()
