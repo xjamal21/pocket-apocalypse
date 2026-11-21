@@ -33,10 +33,11 @@ Yao Hong
 
 ```
 Assets/
-├── Textures/     # Pixel-art sprites, UI frames, icons and more
-├── Audio/        # Built-in soundtrack and SFX
-├── Prefabs/      # Reusable UI and gameplay prefabs
-├── Scenes/       # Game scenes
+├── Art/          # Pixel-art sprites, characters, enemies, and Smartphone OS UI assets
+├── Audio/        # Built-in soundtrack and sound effects
+├── Data/         # ScriptableObject items, recipes, waves, and character configs
+├── Prefabs/      # Player, weapons, projectiles, enemies, drops, and UI prefabs
+├── Scenes/       # Main menu and gameplay scenes
 └── Scripts/      # Modular C# scripts (one class per file)
 
       
