@@ -26,4 +26,9 @@ Tech Stack
 **ENGINE**: UNITY (2D)
 **LANGUAGE**: C#
 
+Contributors
+Dixon
+Po Keng
+Yao Hong
+
       
