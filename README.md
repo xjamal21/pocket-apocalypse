@@ -20,6 +20,15 @@ Gameplay & Core Systems
   Music Player App (MP3) : Built-in soundtrack playback, local audio importing.
   Casino : Yeah Gamble.
 
+## Project Structure
+```
+Assets/
+├── Textures/          # Pixel-art sprites, characters, enemies, and Smartphone OS UI assets
+├── Audio/        # Built-in soundtrack and sound effects
+├── Data/         # ScriptableObject items, recipes, waves, and character configs
+├── Prefabs/      # Player, weapons, projectiles, enemies, drops, and UI prefabs
+├── Scenes/       # Main menu and gameplay scenes
+└── Scripts/      # Modular C# scripts (one class per file)
 ```
 
 Tech Stack 
@@ -31,13 +40,6 @@ Dixon
 Po Keng
 Yao Hong
 
-```
-Assets/
-├── Art/          # Pixel-art sprites, characters, enemies, and Smartphone OS UI assets
-├── Audio/        # Built-in soundtrack and sound effects
-├── Data/         # ScriptableObject items, recipes, waves, and character configs
-├── Prefabs/      # Player, weapons, projectiles, enemies, drops, and UI prefabs
-├── Scenes/       # Main menu and gameplay scenes
-└── Scripts/      # Modular C# scripts (one class per file)
+
 
       
