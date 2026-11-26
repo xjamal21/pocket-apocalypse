@@ -100,7 +100,6 @@ public class MusicPlayerApp : MonoBehaviour
 
     public void ImportMusicFiles()
     {
-#if UNITY_EDITOR
         string path = UnityEditor.EditorUtility.OpenFilePanelWithFilters(
             "Import Music Track",
             "",
@@ -116,9 +115,6 @@ public class MusicPlayerApp : MonoBehaviour
 
             StartCoroutine(LoadAudioFilesCoroutine(new string[] { destPath }, true));
         }
-#else
-        Debug.LogWarning("Runtime file dialog requires a standalone file browser plugin in builds. Drop files into: " + importedFolderPath);
-#endif
     }
 
     private IEnumerator LoadAudioFilesCoroutine(string[] filePaths, bool autoPlayLast)

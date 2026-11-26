@@ -21,9 +21,30 @@ public class UserTime : MonoBehaviour
     {
         if (clockText == null) return;
 
-        string format = use24HourFormat
-            ? (showSeconds ? "HH:mm:ss" : "HH:mm")
-            : (showSeconds ? "hh:mm:ss tt" : "hh:mm tt");
+        string format;
+
+        if (use24HourFormat)
+        {
+            if (showSeconds)
+            {
+                format = "HH:mm:ss";
+            }
+            else
+            {
+                format = "HH:mm";
+            }
+        }
+        else
+        {
+            if (showSeconds)
+            {
+                format = "hh:mm:ss tt";
+            }
+            else
+            {
+                format = "hh:mm tt";
+            }
+        }
 
         string currentTime = DateTime.Now.ToString(format);
 

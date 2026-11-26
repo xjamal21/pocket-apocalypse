@@ -73,10 +73,10 @@ public class ButtonJuice : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (!gameObject.activeInHierarchy) return;
         if (punchRoutine != null) StopCoroutine(punchRoutine);
-        punchRoutine = StartCoroutine(PunchCoroutine());
+        punchRoutine = StartCoroutine(PunchCount());
     }
 
-    private IEnumerator PunchCoroutine()
+    private IEnumerator PunchCount()
     {
         Vector3 peak = baseScale * punchScale;
         float t = 0f;
